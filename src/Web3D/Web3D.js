@@ -1,29 +1,21 @@
-import React from "react";
+import { useState } from "react"
 import Canvas from "./Canvas"
 
-class Web3D extends React.Component {
+function Web3D() {
+    const [testVal, setTestVal] = useState(0);
 
-    constructor(props){
-        super(props)
-        this.state = {
-            testVal:0
-        }
-        this.onTestButtonClicked = this.onTestButtonClicked.bind(this)
-    }
-
-    render(){
-        return (
-            <div className="container">
-                <div className="controls">
-                    <button onClick={this.onTestButtonClicked}>Hello</button>
-                </div>
-                <Canvas test={this.state.testVal}></Canvas>
+    return (
+        <div className="container">
+            <div className="controls">
+                <button onClick={onTestButtonClicked}>Hello</button>
             </div>
-        )
-    }
+            <Canvas test={testVal}></Canvas>
+        </div>
+    )
 
-    onTestButtonClicked(){
-        this.setState({testVal:this.state.testVal+1})
+    function onTestButtonClicked(){
+        console.log(testVal)
+        setTestVal(testVal+1)
     }
 }
 
