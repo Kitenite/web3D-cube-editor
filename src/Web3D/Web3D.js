@@ -2,21 +2,17 @@ import { useState } from "react"
 import Canvas from "./Canvas"
 
 function Web3D() {
-    const [testVal, setTestVal] = useState(0);
+    const [cubeMode, toggleCubeMode] = useState(false);
 
     return (
         <div className="container">
+            <Canvas addCube={cubeMode}></Canvas>
+
             <div className="controls">
-                <button onClick={onTestButtonClicked}>Hello</button>
+                <button onClick={() => toggleCubeMode(!cubeMode)}>{cubeMode ? 'Cancel': 'Cube Mode' }</button>
             </div>
-            <Canvas test={testVal}></Canvas>
         </div>
     )
-
-    function onTestButtonClicked(){
-        console.log(testVal)
-        setTestVal(testVal+1)
-    }
 }
 
 export default Web3D
