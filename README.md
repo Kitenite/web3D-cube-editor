@@ -3,5 +3,8 @@
 
 ## Usage
 ```
-npm run start
+npm start
 ```
+## Modes
+1) Shape editor
+    Add and remove shapes on click
