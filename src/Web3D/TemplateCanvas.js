@@ -52,6 +52,21 @@ class TemplateCanvas extends React.Component {
         this.mouse.x = ( (event.clientX+ window.scrollX)/ window.innerWidth ) * 2 - 1;
         this.mouse.y = - ( (event.clientY+ window.scrollY) / window.innerHeight ) * 2 + 1;
     }
+
+    /* 
+        This method should be overrided and add appropriate rendering logic, include the logic below
+    */
+
+    renderScene = () => {
+        console.log("Template render method called. Override this render method including the code below.")
+        
+        const renderer = this.renderer
+        const scene = this.scene
+        const camera = this.camera
+
+        renderer.render( scene, camera )
+        window.requestAnimationFrame(this.renderScene)
+    }
 }
 
 export default TemplateCanvas

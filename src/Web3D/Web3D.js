@@ -1,17 +1,18 @@
 import { useState } from "react"
 import ShapeEditor from "./ShapeEditor"
+import WordsEditor from "./WordsEditor"
 
 import React from 'react'
 
 function Web3D() {
-    const [canvas, toggleCanvasType] = useState(<ShapeEditor></ShapeEditor>);
+    const [canvas, toggleCanvasType] = useState(<WordsEditor></WordsEditor>);
 
     function onDropDownChanged(event){
         var mode = event.target.value
         if (mode == Modes.Shapes){
             toggleCanvasType(<ShapeEditor></ShapeEditor>)
         } else if (mode == Modes.Words){
-            toggleCanvasType(<p>Words</p>)
+            toggleCanvasType(<WordsEditor></WordsEditor>)
         }
     }
 
@@ -27,11 +28,8 @@ function Web3D() {
                 </select>
             </div>
         </div>
-    )
-    
+    )   
 }
-
-
 
 const Modes = {
     Shapes: 0,
