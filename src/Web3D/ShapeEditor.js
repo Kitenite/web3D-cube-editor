@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 import  React from "react";
+import TemplateCanvas from './TemplateCanvas'
 
-class Canvas extends React.Component {
+class ShapeEditor extends TemplateCanvas {
     // Create class variables
     scene = null
     renderer = null
@@ -10,49 +11,12 @@ class Canvas extends React.Component {
 
     colors = {
         lightPink: 0xF5BFD2,
-        darkPink: 0xff0000
+        darkPink: 0xff26ac
     }
 
-
-    constructor(props) {
-        super(props);
-        console.log(this.props)
-
-    }
-
-    render(){        
-        return (
-            <div>
-                <div ref={ref => (this.mount = ref)}/>
-                <p>Cube Mode: {this.props.addCube ? 'on' : 'off'}</p>
-
-            </div>
-            )    
-    }
-
-    componentDidMount(){
-        this.initCanvas()
-        window.addEventListener('resize', this.onWindowResize);
-        window.addEventListener('mousemove', this.onMouseMove);
-        window.addEventListener('click', this.onMouseClick);
-    }
-
-    initCanvas(){
-        const scene = new THREE.Scene()
-        const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 )
-        const renderer = new THREE.WebGLRenderer({ alpha:true})
-
-        renderer.setSize( window.innerWidth, window.innerHeight )
-        this.mount.appendChild( renderer.domElement )
-        camera.position.z = 5
-    
-        this.scene = scene
-        this.camera = camera
-        this.renderer = renderer
-        this.raycaster = new THREE.Raycaster();
-        this.mouse = new THREE.Vector2();
-
-        window.requestAnimationFrame(this.renderScene);
+    render(){   
+        // This is required to to attach the Three.js ref to component
+        return <div ref={ref => (this.mount = ref)}/> 
     }
 
     addCube(x = 0, y = 0, z = 0){
@@ -69,14 +33,6 @@ class Canvas extends React.Component {
         renderer.render( scene, camera );
     }
 
-    onWindowResize = () => {
-        const width = this.mount ? this.mount.clientWidth : window.innerWidth;
-        const height = this.mount ? this.mount.clientHeight : window.innerHeight;
-    
-        this.renderer.setSize( width, height );
-        this.camera.aspect = width / height;
-        this.camera.updateProjectionMatrix();
-    };
 
     onMouseClick = () => {
         const scene = this.scene
@@ -92,13 +48,6 @@ class Canvas extends React.Component {
         }
     }
 
-    onMouseMove = (event) => {
-        // calculate mouse position in normalized device coordinates
-        // (-1 to +1) for both components
-        this.mouse.x = ( (event.clientX+ window.scrollX)/ window.innerWidth ) * 2 - 1;
-        this.mouse.y = - ( (event.clientY+ window.scrollY) / window.innerHeight ) * 2 + 1;
-
-    }
 
     renderScene = () => {
         const renderer = this.renderer
@@ -146,6 +95,4 @@ class Canvas extends React.Component {
     }
 }
 
-
-
-export default Canvas
+export default ShapeEditor

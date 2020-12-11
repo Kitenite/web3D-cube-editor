@@ -1,5 +1,7 @@
 ## Purpose
 3D fun with Three.js and React.js
 
-### To Run
+## Usage
+```
 npm run start
+```
