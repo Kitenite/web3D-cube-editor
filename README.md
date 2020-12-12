@@ -1,10 +1,9 @@
 ## Purpose
-3D fun with Three.js and React.js
-
+A simple shape editor in React and Three.js that adds and removes cubes with ray tracing
 ## Usage
 ```
+npm install
 npm start
 ```
-## Modes
-1) Shape editor
-    Add and remove shapes on click
+
+![screenshot](./public/screenshot.png)

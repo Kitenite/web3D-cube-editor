@@ -1,10 +1,10 @@
 import './App.css';
-import Web3D from './Web3D/Web3D'
+import ShapeEditor from './Web3D/ShapeEditor'
 
 function App() {
   return (
     <div className="App">
-      <Web3D></Web3D>
+      <ShapeEditor></ShapeEditor>
     </div>
   );
 }
